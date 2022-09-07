@@ -9,9 +9,12 @@ const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
 
   const handleClick = async () => {
-    const response = await fetch("api/workouts/" + workout._id, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      "https://sheltered-coast-34104.herokuapp.com/api/workouts/" + workout._id,
+      {
+        method: "DELETE",
+      }
+    );
 
     const json = await response.json();
 

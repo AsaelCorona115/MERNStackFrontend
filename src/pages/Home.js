@@ -10,7 +10,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts");
+      const response = await fetch(
+        "https://sheltered-coast-34104.herokuapp.com/api/workouts/"
+      );
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_WORKOUTS", payload: json });
