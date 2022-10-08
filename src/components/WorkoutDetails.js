@@ -10,7 +10,7 @@ const WorkoutDetails = ({ workout }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      "https://sheltered-coast-34104.herokuapp.com/api/workouts/" + workout._id,
+      "https://mernxercise.herokuapp.com/api/workouts/" + workout._id,
       {
         method: "DELETE",
       }
