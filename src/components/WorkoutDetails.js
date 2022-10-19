@@ -1,5 +1,6 @@
 //Hooks
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 //date fns
 import formattDistanceToNow from "date-fns/formatDistanceToNow";
@@ -7,11 +8,18 @@ import { formatDistance, formatDistanceToNow } from "date-fns";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   const handleClick = async () => {
+    if (!user) {
+      return;
+    }
     const response = await fetch(
       "https://mernxercise.herokuapp.com/api/workouts/" + workout._id,
       {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
         method: "DELETE",
       }
     );
